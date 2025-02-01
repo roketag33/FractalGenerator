@@ -4,10 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-egui = { version = "0.22" }
-eframe = { version = "0.22", features = ["glow"] }
-winapi = { version = "0.3.9", features = ["windef", "winuser"] }
-image = "0.24.9"
-rayon = "1.10.0"
-rodio = "0.17"
-serde = { version = "1.0.215", features = ["derive"] }
+eframe = { version = "0.24.0", features = ["default", "persistence"] }
+egui = "0.24.0"
+image = "0.24.7"
+num = "0.4.1"
+rayon = "1.8.0"
+rfd = "0.12.1"
+
+[dependencies.winapi]
+version = "0.3.9"
+features = [
+    "winuser",
+    "windef",
+]

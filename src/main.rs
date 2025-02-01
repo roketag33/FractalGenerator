@@ -1,14 +1,24 @@
-mod fractal;
-mod audio;
+mod app;
+mod fractal_params;
+mod fractal_types;
+mod color_schemes;
+mod fractal_calculator;
 mod ui;
 
-fn main() -> Result<(), eframe::Error> {
-    let mut options = eframe::NativeOptions::default();
-    options.initial_window_size = Some(egui::vec2(800.0, 600.0)); // Taille initiale explicite
+use app::FractalApp;
+use eframe::egui;
 
+fn main() -> eframe::Result<()> {
+    let options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default()
+            .with_inner_size([800.0, 600.0])
+            .with_title("Générateur de Fractales"),
+        ..Default::default()
+    };
+    
     eframe::run_native(
-        "Générateur de fractales interactif",
+        "Générateur de Fractales",
         options,
-        Box::new(|_cc| Box::new(ui::app::FractalApp::default())),
+        Box::new(|_cc| Box::new(FractalApp::default())),
     )
-}
+} 
