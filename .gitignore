@@ -1,0 +1,49 @@
+# Fichiers générés par Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Fichiers de l'IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Fichiers de debug
+*.pdb
+
+# Fichiers de profiling
+*.profile
+
+# Fichiers de documentation générés
+/doc/
+/target/doc/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+
+# Fichiers de sortie
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Fichiers d'images générés par l'application
+*.png
+*.jpg
+*.jpeg
+
+# Fichiers de configuration locaux
+.env
+.env.local
+config.local.toml
+
+# Fichiers de crash
+*.dump
+
+# Fichiers de cache
+.cargo/
+.idea
