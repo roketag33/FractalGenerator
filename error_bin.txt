@@ -1,0 +1,101 @@
+warning: fields `min_detail_level`, `max_detail_level`, and `error_threshold` are never read
+  --> src\fractal_calculator.rs:30:5
+   |
+29 | pub struct AdaptiveRenderer {
+   |            ---------------- fields in this struct
+30 |     min_detail_level: u32,
+   |     ^^^^^^^^^^^^^^^^
+31 |     max_detail_level: u32,
+   |     ^^^^^^^^^^^^^^^^
+32 |     error_threshold: f64,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `AdaptiveRenderer` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: fields `escape_radius` and `color_lookup` are never read
+  --> src\fractal_calculator.rs:37:5
+   |
+36 | pub struct PrecomputedData {
+   |            --------------- fields in this struct
+37 |     escape_radius: Vec<f64>,
+   |     ^^^^^^^^^^^^^
+38 |     color_lookup: Vec<(u8, u8, u8)>,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PrecomputedData` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: fields `data` and `size` are never read
+  --> src\fractal_calculator.rs:43:5
+   |
+42 | pub struct SharedMemoryBuffer {
+   |            ------------------ fields in this struct
+43 |     data: Arc<RwLock<Vec<u8>>>,
+   |     ^^^^
+44 |     size: (usize, usize),
+   |     ^^^^
+   |
+   = note: `SharedMemoryBuffer` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: methods `optimize_complex_ops` and `fast_norm` are never used
+   --> src\fractal_calculator.rs:160:8
+    |
+47  | impl<F: FractalFunction + Sync> FractalCalculator<F> {
+    | ---------------------------------------------------- methods in this implementation
+...
+160 |     fn optimize_complex_ops(&self, z: Complex<f64>) -> Complex<f64> {
+    |        ^^^^^^^^^^^^^^^^^^^^
+...
+168 |     fn fast_norm(&self, z: Complex<f64>) -> f64 {
+    |        ^^^^^^^^^
+
+warning: `fractal_generator` (lib) generated 4 warnings
+    Checking fractal_generator v0.1.0 (C:\Users\roket\Documents\dev\imageproject\FractalGenerator)
+warning: unused imports: `BurningShip`, `GrayscaleScheme`, `JuliaSet`, `MandelbrotSet`, `NewtonSet`, and `QualityLevel`
+ --> src\bin\generate_assets.rs:2:45
+  |
+2 |     fractal_calculator::{FractalCalculator, QualityLevel},
+  |                                             ^^^^^^^^^^^^
+3 |     fractal_params::FractalParams,
+4 |     fractal_types::{MandelbrotSet, JuliaSet, BurningShip, NewtonSet},
+  |                     ^^^^^^^^^^^^^  ^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^
+5 |     color_schemes::{FireScheme, OceanScheme, RainbowScheme, ClassicScheme, GrayscaleScheme},
+  |                                                                            ^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::path::Path`
+ --> src\bin\generate_assets.rs:8:5
+  |
+8 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+
+error[E0283]: type annotations needed
+   --> src\bin\generate_assets.rs:22:16
+    |
+22  |     let calc = FractalCalculator::new_mandelbrot(params.clone());
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ cannot infer type of the type parameter `F` declared on the struct `FractalCalculator`
+    |
+    = note: cannot satisfy `_: FractalFunction`
+    = help: the following types implement trait `FractalFunction`:
+              BurningShip
+              JuliaSet
+              MandelbrotSet
+              NewtonSet
+              Tricorn
+note: required by a bound in `FractalCalculator::<F>::new_mandelbrot`
+   --> C:\Users\roket\Documents\dev\imageproject\FractalGenerator\src\fractal_calculator.rs:47:9
+    |
+47  | impl<F: FractalFunction + Sync> FractalCalculator<F> {
+    |         ^^^^^^^^^^^^^^^ required by this bound in `FractalCalculator::<F>::new_mandelbrot`
+...
+113 |     pub fn new_mandelbrot(params: FractalParams) -> FractalCalculator<MandelbrotSet> {
+    |            -------------- required by a bound in this associated function
+help: consider specifying the generic argument
+    |
+22  |     let calc = FractalCalculator::<F>::new_mandelbrot(params.clone());
+    |                                 +++++
+
+For more information about this error, try `rustc --explain E0283`.
+warning: `fractal_generator` (bin "generate_assets") generated 2 warnings
+error: could not compile `fractal_generator` (bin "generate_assets") due to 1 previous error; 2 warnings emitted

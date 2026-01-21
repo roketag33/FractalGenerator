@@ -38,8 +38,8 @@ impl FractalFunction for MandelbrotSet {
 }
 
 impl FractalFunction for JuliaSet {
-    fn iterate(&self, _c: Complex<f64>, z: Complex<f64>, max_iter: u32) -> (u32, Complex<f64>) {
-        let mut z = z;
+    fn iterate(&self, c: Complex<f64>, _z: Complex<f64>, max_iter: u32) -> (u32, Complex<f64>) {
+        let mut z = c;
         let mut i = 0;
         
         while i < max_iter && z.norm_sqr() <= 4.0 {
@@ -79,8 +79,8 @@ impl FractalFunction for Tricorn {
 }
 
 impl FractalFunction for NewtonSet {
-    fn iterate(&self, _c: Complex<f64>, z: Complex<f64>, max_iter: u32) -> (u32, Complex<f64>) {
-        let mut z = z;
+    fn iterate(&self, c: Complex<f64>, _z: Complex<f64>, max_iter: u32) -> (u32, Complex<f64>) {
+        let mut z = c;
         let mut i = 0;
         let tolerance = 1e-6;
         

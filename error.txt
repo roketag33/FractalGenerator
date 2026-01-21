@@ -1,0 +1,54 @@
+    Checking fractal_generator v0.1.0 (C:\Users\roket\Documents\dev\imageproject\FractalGenerator)
+warning: fields `min_detail_level`, `max_detail_level`, and `error_threshold` are never read
+  --> src\fractal_calculator.rs:30:5
+   |
+29 | pub struct AdaptiveRenderer {
+   |            ---------------- fields in this struct
+30 |     min_detail_level: u32,
+   |     ^^^^^^^^^^^^^^^^
+31 |     max_detail_level: u32,
+   |     ^^^^^^^^^^^^^^^^
+32 |     error_threshold: f64,
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `AdaptiveRenderer` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: fields `escape_radius` and `color_lookup` are never read
+  --> src\fractal_calculator.rs:37:5
+   |
+36 | pub struct PrecomputedData {
+   |            --------------- fields in this struct
+37 |     escape_radius: Vec<f64>,
+   |     ^^^^^^^^^^^^^
+38 |     color_lookup: Vec<(u8, u8, u8)>,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `PrecomputedData` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: fields `data` and `size` are never read
+  --> src\fractal_calculator.rs:43:5
+   |
+42 | pub struct SharedMemoryBuffer {
+   |            ------------------ fields in this struct
+43 |     data: Arc<RwLock<Vec<u8>>>,
+   |     ^^^^
+44 |     size: (usize, usize),
+   |     ^^^^
+   |
+   = note: `SharedMemoryBuffer` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: methods `optimize_complex_ops` and `fast_norm` are never used
+   --> src\fractal_calculator.rs:160:8
+    |
+47  | impl<F: FractalFunction + Sync> FractalCalculator<F> {
+    | ---------------------------------------------------- methods in this implementation
+...
+160 |     fn optimize_complex_ops(&self, z: Complex<f64>) -> Complex<f64> {
+    |        ^^^^^^^^^^^^^^^^^^^^
+...
+168 |     fn fast_norm(&self, z: Complex<f64>) -> f64 {
+    |        ^^^^^^^^^
+
+warning: `fractal_generator` (lib) generated 4 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.33s
